@@ -1,0 +1,62 @@
+<html ng-app="myModule">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+		<title>Sreenath Veeraiahgari</title>
+		<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css" media="screen"> 
+		<link rel="stylesheet" type="text/css" href="css/custom.css" >
+		<script type="text/javascript" src="js/angular.min.js"></script>
+		<script type="text/javascript" src="js/angularscripts.js"></script>
+	</head>
+	<body ng-controller="myController" >
+		<div >
+			<div >
+				<div>
+					{{employee.firstName}}
+				</div>
+				<div>
+					{{employee.lastName}}
+				</div>
+				<div>
+					{{employee.gender}}
+				</div>	
+				
+			</div>
+		</div> 
+		<div  >
+			<div >
+				<div>
+					{{country.name}}
+				</div>
+				<div>
+					{{country.code}}
+				</div>
+				<div>
+					<img ng-src="{{country.flag}}" alt="{{country.name +'Flag'}}" height="200" width="100"/>
+				</div>
+			</div>
+		</div>
+		<div>
+			<table align="center">
+				<tr>
+					<td><input type="text" ng-model="employee.firstName" /></td>
+				</tr>
+				<tr>
+					<td><input type="text" ng-model="employee.lastName" /></td>
+				</tr>
+				<tr>
+					<td><input type="text" ng-model="employee.gender" /></td>
+				</tr>
+				<tr>
+					<td>{{employee.firstName}}</td>
+				</tr>
+				<tr>
+					<td>{{employee.lastName}}</td>
+				</tr>
+				<tr>
+					<td>{{employee.gender}}</td>
+				</tr>
+			</table>
+		</div>
+				
+	</body>
+</html>

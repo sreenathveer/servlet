@@ -1,0 +1,120 @@
+<html ng-app="myModule">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+		<title>Sreenath Veeraiahgari</title>
+		<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css" media="screen"> 
+		<link rel="stylesheet" type="text/css" href="css/custom.css" >
+		<script type="text/javascript" src="js/angular.min.js"></script>
+		<script type="text/javascript" src="js/angularscripts.js"></script>
+	</head>
+	<body ng-controller="myController" style="padding:100px;">
+		<h4><b>Example 1: Displaying data in table format</b></h4>
+		<table border="1">
+				<thead>
+					<tr>
+						<th>First name</th>
+						<th>Last name</th>
+						<th>Gender</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="employee in employees">
+						<td>{{employee.firstName}}</td>
+						<td>{{employee.lastName}}</td>
+						<td>{{employee.gender}}</td>
+					</tr>
+				</tbody>
+		</table>
+		<h4><b>Example 2: Displaying data in un-orderlist format</b></h4>
+		<ul>
+			<li ng-repeat="country in countries">
+				{{country.name}} - Index - {{$index}}
+				<ul>
+					<li ng-repeat="city in country.cities">
+						{{city.name}} - Parent Index - {{$parent.$index}} -  Index - {{ $index }}
+					</li>
+				</ul>
+			</li>
+		</ul>
+		<h4><b>Example 3: ng-click usage</b></h4>
+		<table border="1">
+			<thead>
+				<tr>
+					<th>Technology</th>
+					<th>Likes</th>
+					<th>Dislikes</th>
+					<th>Actions</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="technology in technologies">
+					<td>{{technology.name}}</td>
+					<td>{{technology.likes}}</td>
+					<td>{{technology.dislikes}}</td>
+					<td>
+						<input type="button" value="like" ng-click="incrementLikes(technology)" />/
+						<input type="button" value="dislike" ng-click="incrementDisLikes(technology)" />
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<h4><b>Example 4: Filter and Sort data</b></h4>
+		<table border="1">	
+			
+			<thead>
+				<!-- <tr><td><input type="number"  ng-model="rowLimit"></td></tr>
+				<tr>
+					<td>
+						<select ng-model="sortColumn">
+							<option value="name" selected>Name ASC</option>
+							<option value="dateOfBirth">Date ASC</option>
+							<option value="+salary">Salary ASC</option>
+							<option value="-salary">Salary DESC</option>
+						</select>
+					</td>
+				</tr> -->
+				<tr>
+					<th ng-click="sortData('name')">Name <div ng-class="getSortClass('name')"></div></th>
+					<th ng-click="sortData('dateOfBirth')">Date <div ng-class="getSortClass('dateOfBirth')"></div></th>
+					<th ng-click="sortData('gender')">Gender <div ng-class="getSortClass('gender')"></div></th>
+					<th ng-click="sortData('salary')">Salary <div ng-class="getSortClass('salary')"></div></th>
+					<th ng-click="sortData('salary')">Salary <div ng-class="getSortClass('salary')"></div></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="employer in employers |limitTo: 5| orderBy: sortColumn: reverseSort">
+					<td>{{employer.name | uppercase}}</td>
+					<td>{{employer.dateOfBirth | date:"MM/dd/yyyy"}}</td>
+					<td>{{employer.gender | lowercase}}</td>
+					<td>{{employer.salary | number:2}}</td>
+					<td>{{employer.salary | currency:$:1}}</td>
+				</tr>
+			</tbody>
+		</table>
+		
+		<h4><b>Example 5: Searching the data</b></h4>
+		Employee Search <input type="text" placeholder="search employees " ng-model="searchText.firstName">
+						<input type="text" placeholder="search employees" ng-model="searchText.gender">
+						<input type="checkbox" ng-model="exactMatch" />Exact match
+						<br/><br/>
+						
+						<input type="text" placeholder="search employees firstname & gender " ng-model="searchText1">
+						<br/>
+		<table border="1">
+				<thead>
+					<tr>
+						<th>First name</th>
+						<th>Last name</th>
+						<th>Gender</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="employee in employees | filter:searchText:exactMatch | filter:search">
+						<td>{{employee.firstName}}</td>
+						<td>{{employee.lastName}}</td>
+						<td>{{employee.gender}}</td>
+					</tr>
+				</tbody>
+		</table>			
+	</body>
+</html>
