@@ -1,0 +1,27 @@
+body{
+	font-family:serif;
+}.objective{
+	display:block;
+	margin: 0 auto;
+	border:2px solid gray;
+	height:90px;
+	border-radius:5%;
+}.plus-sign{
+	padding: 5% 0;
+	text-align: center;
+}#ui-data-div{
+	color: darkorange;
+}#script-data-div{
+	color: #264888;
+}
+/* side menu */
+.menu li{
+	list-style-type:telugu;
+	padding: 5px;
+	border-bottom: 1px dotted #264888;
+}.menu li a{
+	text-decoration: none;
+	color: #264888;
+}.header{
+	border-bottom:1px dotted gray; 
+}
