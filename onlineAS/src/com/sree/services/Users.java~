@@ -1,0 +1,18 @@
+/**
+ * 
+ */
+package com.sree.services;
+
+/**
+ * @author ptblr2015
+ *
+ */
+public class Users {
+
+	private string name;
+	private string email;
+	private string date;
+	private string country;
+	
+	
+}
